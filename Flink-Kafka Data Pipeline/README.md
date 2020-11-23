@@ -1,6 +1,7 @@
 # Apache Flink and Apache Kafka
 
-This project is use a simple Flink job to show how to integrate Apache Kafka to Flink using the Flink Connector for Kafka.
+This project is use a simple Flink job to show how to integrate Apache Kafka to Flink using the KafkaTopics as Source and Sink.
+To run it load the project on Intellij IDE and run Table2.java
 
 
 ## Start Kafka and Create Topic
@@ -23,35 +24,15 @@ Start a Kafka broker by running the following command in a new terminal:
 ./bin/kafka-server-start.sh config/server.properties
 ```
 
-In another terminal, run the following command to create a Kafka topic called `flink-demo`:
+In another terminal, run the following command to create a Kafka Topic called `INPUT`,`SINK` and `SINK1`:
 
 ``` bash
-./bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic flink-demo
+./bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic INPUT
+./bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic SINK  
+./bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic SINK1
+
 
 ```
 
 
-## Build and Run the Application
-
-In the project folder:
-
-```
-$ mvn clean package 
-```
-
-And run the Flink Consumer:
-
-```
-$ mvn exec:java -Dexec.mainClass=com.grallandco.demos.ReadFromKafka
-```
-
-and Producer: 
-
-```
-mvn exec:java -Dexec.mainClass=com.grallandco.demos.WriteToKafka
-```
-
-You should see messages printed in the Consumer console.
-
-You can run this application directly in a Flink cluster.
 
