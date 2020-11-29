@@ -1,0 +1,9 @@
+{
+
+    "Function": "Filter",
+    "Source": "DemoSource1",
+    "Sink": "DemoSink1",
+    "Value": "3",
+    "Param": "M"
+
+}
